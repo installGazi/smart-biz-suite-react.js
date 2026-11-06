@@ -1,7 +1,7 @@
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import TestApi from './pages/TestApi';
@@ -10,14 +10,16 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import ForgotPassword from './pages/ForgotPassword';
 import AdminPanel from './pages/AdminPanel';
-import UploadMedia from './pages/UploadMedia';
-import MyUploads from './pages/MyUploads';
+import GlobalNews from './pages/GlobalNews';
+import Chat from './pages/Chat';
+import Booking from './pages/Booking';
+import Payment from './pages/Payment'; 
 
 const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="container mx-auto p-4">
+      <main className="pt-16 min-h-screen bg-slate-50">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/testapi" element={<TestApi />} />
@@ -26,24 +28,14 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/adminpanel" element={<AdminPanel />} />
-          <Route path="/uploadmedia" element={<UploadMedia />} />
-          <Route path="/myuploads" element={<MyUploads />} />
+          <Route path="/globalnews" element={<GlobalNews />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/payment" element={<Payment />} /> 
         </Routes>
-      </div>
+      </main>
 
-      {/* Toast Notification Container */}
-      <ToastContainer
-        position="top-left"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={true}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <ToastContainer position="top-right" autoClose={3000} theme="light" />
     </BrowserRouter>
   );
 };
