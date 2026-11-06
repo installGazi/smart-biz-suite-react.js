@@ -43,7 +43,7 @@ const Home = () => {
   const emailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=muhammadsaifaulgazi@gmail.com&su=Project%20Inquiry%20from%20Portfolio";
   const whatsappLink = `https://wa.me/8801907823654?text=${encodeURIComponent("Hi Gazi, I found your portfolio and I am interested in discussing a project with you.")}`;
 
-  // Gmail কম্পোজ ওপেন করার ফাংশন (সবচেয়ে সহজ ও নিশ্চিত)
+  // Gmail কম্পোজ ওপেন করার ফাংশন
   const handleContactSubmit = (e) => {
     e.preventDefault();
     const { name, email, message } = contactData;
@@ -128,10 +128,10 @@ const Home = () => {
             <div className="flex justify-center items-center relative mt-12 lg:mt-0">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 via-purple-600 to-emerald-400 rounded-[2.5rem] blur-2xl opacity-40 transform scale-90 translate-y-4 animate-pulse"></div>
 
-              {/* এখানে aspect-[4/5] দেওয়া হয়েছে যাতে ছবি না থাকলেও জায়গা ফাঁকা না হয় */}
+              {/* ⬇️ এখানে src="/me.png" করা হয়েছে */}
               <div className="relative w-full max-w-[280px] sm:max-w-xs aspect-[4/5] rounded-[2.5rem] overflow-hidden border-4 border-white/50 shadow-2xl bg-slate-900 group">
                 <img 
-                  src="/photos/me.png" 
+                  src="/me.png" 
                   alt="Gazi Saiful" 
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" 
                 />
