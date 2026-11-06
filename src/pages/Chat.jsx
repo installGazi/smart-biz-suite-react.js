@@ -4,6 +4,11 @@ import { PaperAirplaneIcon, UserCircleIcon, ArrowLeftIcon, TrashIcon } from "@he
 import { toast } from "react-toastify";
 import api from "../utils/api";
 
+// অটোমেটিক URL ডিটেকশন
+const SOCKET_URL = import.meta.env.MODE === "production" 
+  ? "https://smart-biz-suite-express-js.onrender.com" 
+  : "http://localhost:5000";
+
 const Chat = () => {
   const [socket, setSocket] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
@@ -36,7 +41,7 @@ const Chat = () => {
     const token = localStorage.getItem("token");
     if (!token || !user) return;
 
-    const newSocket = io("http://localhost:5000", { auth: { token } });
+    const newSocket = io(SOCKET_URL, { auth: { token } });
     setSocket(newSocket);
 
     newSocket.on("receiveMessage", (message) => {

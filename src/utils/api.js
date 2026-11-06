@@ -1,16 +1,19 @@
-
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/api`
-  : "/api";
+// Vite অটোমেটিক বুঝে নেবে এটা প্রোডাকশন নাকি ডেভেলপমেন্ট
+const isProduction = import.meta.env.MODE === "production";
+
+// আপনার Render URL এখানে বসানো হলো
+const baseURL = isProduction 
+  ? "https://smart-biz-suite-express-js.onrender.com/api" 
+  : "http://localhost:5000/api"; 
 
 const api = axios.create({
   baseURL,
   withCredentials: true,
 });
 
-// ✅ প্রতিটি request-এ token header-এ পাঠান (Layer 1 fix)
+// প্রতিটি request-এ token header-এ পাঠান
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -23,6 +26,3 @@ api.interceptors.request.use(
 );
 
 export default api;
-
-
-
